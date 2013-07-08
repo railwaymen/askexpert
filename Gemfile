@@ -28,6 +28,7 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 gem 'haml-rails'
+gem 'twitter-bootstrap-rails'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
