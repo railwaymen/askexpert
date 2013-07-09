@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
+gem 'devise', github: 'plataformatec/devise'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
