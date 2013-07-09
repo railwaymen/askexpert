@@ -2,6 +2,7 @@ AskExpert::Application.routes.draw do
   devise_scope :user do
     resource :registration, only: [:new, :create], path: "users", path_names: {new: "sign_up"}
   end
+  devise_for :users, controllers: {sessions: "sessions"}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
