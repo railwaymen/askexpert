@@ -30,6 +30,8 @@ gem 'jbuilder', '~> 1.2'
 gem 'haml-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise', github: 'plataformatec/devise'
+gem 'omniauth-facebook'
+gem 'omniauth-linkedin'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'

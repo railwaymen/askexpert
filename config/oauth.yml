@@ -1,0 +1,14 @@
+development:
+  facebook:
+    api_key: "490969187655602"
+    secret_key: "cf529dc25312a261fe84cabbc844b188"
+  linkedin:
+    api_key: "9mn9uvkfodk2"
+    secret_key: "ip0Tq8QicG6Iz8V4"
+test:
+  facebook:
+    api_key: "fake_key"
+    secret_key: "fake_secret"
+  linkedin:
+    api_key: "fake_key"
+    secret_key: "fake_secret"

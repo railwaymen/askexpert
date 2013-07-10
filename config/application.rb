@@ -32,3 +32,5 @@ module AskExpert
     end
   end
 end
+
+OAUTH_CONFIG = YAML.load_file("#{Rails.root}/config/oauth.yml")[Rails.env].with_indifferent_access

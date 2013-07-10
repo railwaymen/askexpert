@@ -14,3 +14,6 @@
       = f.submit "Sign in", class: "btn"
       or
       = link_to "Sign up", new_registration_path
+      - [:facebook, :linkedin].each do |provider|
+        or
+        = link_to "Sign in with #{provider.to_s.capitalize}", user_omniauth_authorize_path(provider)
