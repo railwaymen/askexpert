@@ -32,6 +32,7 @@ gem 'twitter-bootstrap-rails'
 gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
+gem 'resque'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'

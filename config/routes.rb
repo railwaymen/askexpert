@@ -1,4 +1,6 @@
 AskExpert::Application.routes.draw do
+  mount Resque::Server.new, at: "/resque"
+  
   devise_scope :user do
     resource :registration, only: [:new, :create], path: "users", path_names: {new: "sign_up"}
   end
