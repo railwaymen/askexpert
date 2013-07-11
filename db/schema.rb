@@ -42,6 +42,7 @@ ActiveRecord::Schema.define(version: 20130711201738) do
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
+    t.string   "email"
     t.text     "summary"
     t.string   "location"
     t.datetime "created_at"
