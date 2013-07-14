@@ -33,6 +33,8 @@ gem 'devise', github: 'plataformatec/devise'
 gem 'omniauth-facebook'
 gem 'omniauth-linkedin'
 gem 'resque'
+gem 'koala'
+gem 'linkedin'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
