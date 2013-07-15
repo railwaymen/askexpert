@@ -34,12 +34,23 @@ class LinkedinService
   end
 
   def set_profile(app_profile, service_profile)
-    app_profile.email = service_profile.email_address
-    app_profile.name = service_profile.formatted_name
-    app_profile.summary = service_profile.headline
+    app_profile.email    = service_profile.email_address
+    app_profile.name     = service_profile.formatted_name
+    app_profile.summary  = service_profile.headline
     app_profile.location = object_name(service_profile.location)
+    app_profile.tag_list << service_profile.interests
+    app_profile.tag_list += tags(:skill, service_profile.skills)
+    app_profile.tag_list += tags(:group, service_profile.group_memberships)
     app_profile.save
     app_profile
+  end
+
+  def tags(field, collection)
+    if collection
+      collection.all.map(&field).map(&:name)
+    else
+      []
+    end
   end
 
   def object_name(obj)

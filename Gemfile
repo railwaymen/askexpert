@@ -35,6 +35,7 @@ gem 'omniauth-linkedin'
 gem 'resque'
 gem 'koala'
 gem 'linkedin'
+gem 'acts-as-taggable-on'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'

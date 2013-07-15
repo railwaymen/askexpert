@@ -6,4 +6,6 @@ class Profile < ActiveRecord::Base
 
   validates :provider, :uid, :name, presence: true
   validates :uid, uniqueness: {scope: :provider}
+
+  acts_as_taggable
 end

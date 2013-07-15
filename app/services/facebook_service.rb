@@ -31,12 +31,23 @@ class FacebookService
   end
 
   def set_profile(app_profile, service_profile)
-    app_profile.email = service_profile["email"]
-    app_profile.name = service_profile["name"]
-    app_profile.summary = service_profile["bio"]
+    app_profile.email    = service_profile["email"]
+    app_profile.name     = service_profile["name"]
+    app_profile.summary  = service_profile["bio"]
     app_profile.location = object_name(service_profile["location"])
+    app_profile.tag_list += tags(service_profile["languages"])
+    app_profile.tag_list += tags(service_profile["interests"].try(:[], "data"))
+    app_profile.tag_list += tags(service_profile["activities"].try(:[], "data"))
     app_profile.save
     app_profile
+  end
+
+  def tags(collection)
+    if collection
+      collection.map{|obj| obj["name"]}
+    else
+      []
+    end
   end
 
   def object_name(obj)
