@@ -1,0 +1,8 @@
+.hero-unit
+  = form_for @post do |f|
+    %fieldset
+      .controls
+        = f.text_area :content, placeholder: "Describe your problem...", class: "span12", rows: 6
+      .controls
+        = f.text_field :tag_list, placeholder: "Tag list...", class: "span12"
+      = f.submit 'Save', class: "btn btn-primary"

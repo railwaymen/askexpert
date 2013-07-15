@@ -21,16 +21,7 @@
     .navbar.navbar-fluid-top
       .navbar-inner
         .container-fluid
-          %a.btn.btn-navbar(data-target=".nav-collapse" data-toggle="collapse")
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          %a.brand(href="#") AskExpert
-          .container.nav-collapse
-            %ul.nav
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+          = link_to "AskExpert", root_path, class: "brand"
 
     .container-fluid
 
@@ -38,16 +29,11 @@
         .span3
           .well.sidebar-nav
             %ul.nav.nav-list
-              %li.nav-header Sidebar
-              %li= link_to "Link 1", "/path1"
-              %li= link_to "Link 2", "/path2"
-              %li= link_to "Link 3", "/path3"
+              %li.nav-header Menu
+              %li= link_to "Posts", root_path
         .span9
           = bootstrap_flash
           = yield
-    
-      %footer
-        %p &copy; Company 2013
     /
       Javascripts
       \==================================================

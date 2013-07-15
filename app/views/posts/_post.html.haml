@@ -1,0 +1,13 @@
+.well
+  - if post.user == current_user
+    .btn-group.pull-right
+      = link_to "#", class: "btn dropdown-toggle",data:{toggle: "dropdown"} do
+        Actions
+        %span.caret
+      %ul.dropdown-menu
+        %li= link_to "Edit", edit_post_path(post)
+        %li= link_to "Destroy", post_path(post), method: :delete, confirm: "Are you sure?"
+  %h2
+    %small= "#{post.user.name} posted this on #{post.created_at.to_s(:long)}"
+  = simple_format(post.content)
+  %p= tag_list post.tag_list
