@@ -1,0 +1,24 @@
+.hero-unit
+  = form_for @profile, url: profile_path, html: {class: "form-horizontal"} do |f|
+    %fieldset
+      .control-group
+        = f.label :name, class: "control-label"
+        .controls
+          = f.text_field :name
+      .control-group
+        = f.label :email, class: "control-label"
+        .controls
+          = f.text_field :email
+      .control-group
+        = f.label :location, class: "control-label"
+        .controls
+          = f.text_field :location
+      .control-group
+        = f.label :summary, class: "control-label"
+        .controls
+          = f.text_area :summary
+      .control-group
+        = f.label :tag_list, class: "control-label"
+        .controls
+          = f.text_field :tag_list
+      = f.submit 'Save', class: "btn btn-primary"

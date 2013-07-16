@@ -7,6 +7,7 @@ AskExpert::Application.routes.draw do
   devise_for :users, controllers: {sessions: "sessions", omniauth_callbacks: "omniauth_callbacks"}
 
   resources :posts, only: [:index, :create, :edit, :update, :destroy]
+  resource :profile, only: [:edit, :update]
 
   root "posts#index"
   # The priority is based upon order of creation: first created -> highest priority.
