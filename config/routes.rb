@@ -8,6 +8,7 @@ AskExpert::Application.routes.draw do
 
   resources :posts, only: [:index, :create, :edit, :update, :destroy]
   resource :profile, only: [:edit, :update]
+  resources :users, only: [:show]
 
   root "posts#index"
   # The priority is based upon order of creation: first created -> highest priority.

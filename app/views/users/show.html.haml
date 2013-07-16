@@ -1,0 +1,11 @@
+.hero-unit
+  %dl.dl-horizontal
+    %dt Name
+    %dd= @profile.name
+    %dt Email
+    %dd= @profile.email
+    %dt Location
+    %dd= @profile.location
+    %dt Summary
+    %dd= @profile.summary
+  %p= tag_list(@profile.tag_list)
