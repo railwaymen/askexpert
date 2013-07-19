@@ -22,6 +22,8 @@
       .navbar-inner
         .container-fluid
           = link_to "AskExpert", root_path, class: "brand"
+          %p.navbar-text.pull-right
+            = link_to "Sign out", destroy_user_session_path, method: :delete
 
     .container-fluid
 
