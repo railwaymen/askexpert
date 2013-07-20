@@ -1,0 +1,10 @@
+.well
+  %h2
+    %small
+      = profile.name
+      = "(#{profile.email})" if profile.email.present?
+    %span.badge.badge-success= profile.provider.camelcase
+  %h3
+    %small= profile.location
+  %p= profile.summary
+  %p= tag_list profile.tag_list
