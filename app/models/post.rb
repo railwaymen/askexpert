@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include Indexable
+  
   belongs_to :user
 
   validates :user, :content, presence: true

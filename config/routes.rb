@@ -8,7 +8,9 @@ AskExpert::Application.routes.draw do
 
   resources :posts, only: [:index, :create, :edit, :update, :destroy]
   resource :profile, only: [:edit, :update]
-  resources :users, only: [:show]
+  resources :users, only: [:show] do
+    post :search, on: :collection
+  end
   resources :contacts, only: [:index]
 
   root "posts#index"

@@ -9,6 +9,21 @@ class User < ActiveRecord::Base
 
   after_create :ensure_public_profile
 
+  searchable do
+    text :name, boost: 4.0 do
+      public_profile.name
+    end
+    text :location, boost: 3.0 do
+      public_profile.location
+    end
+    text :tags, boost: 2.0 do
+      public_profile.tag_list
+    end
+    text :posts, boost: 1.0 do
+      posts.pluck(:content)
+    end
+  end
+
   private
 
   def ensure_public_profile

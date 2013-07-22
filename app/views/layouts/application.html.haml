@@ -22,6 +22,10 @@
       .navbar-inner
         .container-fluid
           = link_to "AskExpert", root_path, class: "brand"
+          = form_tag search_users_path, class: "navbar-form form-search pull-right offset1" do
+            .input-append
+              = search_field_tag :query, "", class: "search-query input-medium", placeholder: "Search user..."
+              = button_tag content_tag(:i, nil, class: "icon-search"), class: "btn", type: :submit
           %p.navbar-text.pull-right
             = link_to "Sign out", destroy_user_session_path, method: :delete
 

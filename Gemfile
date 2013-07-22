@@ -36,6 +36,8 @@ gem 'resque'
 gem 'koala'
 gem 'linkedin'
 gem 'acts-as-taggable-on'
+gem 'sunspot_rails', github: 'sunspot/sunspot'
+gem 'sunspot_solr', github: 'sunspot/sunspot'
 
 group :test, :development do
   gem 'rspec-rails', '~> 2.0'
