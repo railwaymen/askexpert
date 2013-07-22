@@ -10,6 +10,7 @@ AskExpert::Application.routes.draw do
   resource :profile, only: [:edit, :update]
   resources :users, only: [:show] do
     post :search, on: :collection
+    post :subscribe, on: :member
   end
   resources :contacts, only: [:index]
 

@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @post = current_user.posts.build
-    @posts = Post.all
+    @posts = current_user.visible_posts
   end
 
   def edit

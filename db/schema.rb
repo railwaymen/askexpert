@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130715180411) do
+ActiveRecord::Schema.define(version: 20130722192746) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -61,6 +61,16 @@ ActiveRecord::Schema.define(version: 20130715180411) do
   add_index "profiles", ["authentication_id"], name: "index_profiles_on_authentication_id", using: :btree
   add_index "profiles", ["uid"], name: "index_profiles_on_uid", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "subscriptions", force: true do |t|
+    t.integer  "subscriber_id"
+    t.integer  "subscribed_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "subscriptions", ["subscribed_id"], name: "index_subscriptions_on_subscribed_id", using: :btree
+  add_index "subscriptions", ["subscriber_id"], name: "index_subscriptions_on_subscriber_id", using: :btree
 
   create_table "taggings", force: true do |t|
     t.integer  "tag_id"

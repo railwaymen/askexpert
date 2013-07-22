@@ -1,4 +1,6 @@
 .well
+  - if current_user.can_subscribe?(user)
+    = link_to "Subscribe", subscribe_user_path(user), class: "btn pull-right btn-success", method: :post
   %h2
     %small= user.public_profile.name
   %h3

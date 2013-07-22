@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   has_many :contacts, through: :profiles
   has_many :posts, dependent: :destroy
   has_one :public_profile, class_name: "Profile"
+  has_many :subscriptions, foreign_key: :subscriber_id, dependent: :destroy
+  has_many :subscribed_users, through: :subscriptions, source: :subscribed
 
   after_create :ensure_public_profile
 
@@ -22,6 +24,24 @@ class User < ActiveRecord::Base
     text :posts, boost: 1.0 do
       posts.pluck(:content)
     end
+  end
+
+  def can_subscribe?(other)
+    self != other && !subscribed_users.include?(other)
+  end
+
+  def subscribe(other)
+    subscribed_users << other if can_subscribe?(other)
+  end
+
+  def connect(other)
+    ProfileConnection.create(following: public_profile, followed: other.public_profile)
+  end
+
+  def visible_posts
+    user_ids = subscribed_user_ids
+    user_ids << id
+    Post.where(user_id: user_ids).order(created_at: :desc)
   end
 
   private
