@@ -1,0 +1,6 @@
+.well.offset2
+  %h2
+    %small
+      = link_to comment.user.name, comment.user
+      = "commented this on #{comment.created_at.to_s(:long)}"
+  = simple_format(comment.content)

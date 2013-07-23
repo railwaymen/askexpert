@@ -1,0 +1,6 @@
+.well
+  = form_for [post, comment] do |f|
+    %fieldset
+      .controls
+        = f.text_area :content, placeholder: "Leave a comment", class: "span12", rows: 6
+      = f.submit 'Send', class: "btn btn-primary"

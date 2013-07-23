@@ -13,3 +13,4 @@
       = "posted this on #{post.created_at.to_s(:long)}"
   = simple_format(post.content)
   %p= tag_list post.tag_list
+  = link_to "More...", post_path(post)

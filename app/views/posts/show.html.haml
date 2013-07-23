@@ -1,0 +1,10 @@
+.hero-unit
+  %h2
+    %small
+      = link_to @post.user.name, @post.user
+      = "posted this on #{@post.created_at.to_s(:long)}"
+  = simple_format(@post.content)
+  %p= tag_list @post.tag_list
+= render "comments/form", comment: @comment, post: @post
+#comments
+  = render @comments

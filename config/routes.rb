@@ -6,7 +6,9 @@ AskExpert::Application.routes.draw do
   end
   devise_for :users, controllers: {sessions: "sessions", omniauth_callbacks: "omniauth_callbacks"}
 
-  resources :posts, only: [:index, :create, :edit, :update, :destroy]
+  resources :posts, only: [:show, :index, :create, :edit, :update, :destroy] do
+    resources :comments, only: [:create]
+  end
   resource :profile, only: [:edit, :update]
   resources :users, only: [:show] do
     post :search, on: :collection

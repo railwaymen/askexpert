@@ -2,6 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_post, only: [:edit, :update, :destroy]
 
+  def show
+    @post = current_user.visible_posts.find(params[:id])
+    @comments = @post.comments.order(created_at: :desc)
+    @comment = @post.comments.build
+  end
+
   def index
     @post = current_user.posts.build
     @posts = current_user.visible_posts
