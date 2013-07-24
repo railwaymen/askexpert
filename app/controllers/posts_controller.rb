@@ -1,11 +1,17 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:public_show]
   before_action :set_post, only: [:edit, :update, :destroy]
+  layout "unauthenticated", only: [:public_show]
 
   def show
     @post = current_user.visible_posts.find(params[:id])
     @comments = @post.comments.order(created_at: :desc)
     @comment = @post.comments.build
+  end
+
+  def public_show
+    @post = Post.find(params[:id])
+    @comments = @post.comments.order(created_at: :desc)
   end
 
   def index

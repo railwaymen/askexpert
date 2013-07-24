@@ -1,0 +1,7 @@
+%p
+  = @share.content
+  %br
+  Greetings, #{@share.sender.name}
+%p Original post:
+%p= @share.post.content
+%p= link_to "Show post", public_post_url(id: @share.post_id)

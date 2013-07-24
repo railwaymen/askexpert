@@ -5,6 +5,11 @@
       = "posted this on #{@post.created_at.to_s(:long)}"
   = simple_format(@post.content)
   %p= tag_list @post.tag_list
+  = link_to "#share-modal", class: "btn btn-info pull-right", role: "button", data: {toggle: "modal"} do
+    %i.icon-share-alt
+    Share
 = render "comments/form", comment: @comment, post: @post
 #comments
   = render @comments
+#share-modal.modal.hide.fade
+  = render "shares/form", post: @post

@@ -6,8 +6,10 @@ AskExpert::Application.routes.draw do
   end
   devise_for :users, controllers: {sessions: "sessions", omniauth_callbacks: "omniauth_callbacks"}
 
+  get "p/:id" => "posts#public_show", as: :public_post
   resources :posts, only: [:show, :index, :create, :edit, :update, :destroy] do
     resources :comments, only: [:create]
+    resources :shares, only: [:create]
   end
   resource :profile, only: [:edit, :update]
   resources :users, only: [:show] do

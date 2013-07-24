@@ -9,6 +9,8 @@ class Authentication < ActiveRecord::Base
     auth.user_id_changed? && auth.user_id.present?
   end
 
+  delegate :share, to: :service
+
   def retrieve_data
     self.profile = service.profile
     profile.user = user

@@ -24,6 +24,11 @@ class FacebookService
     end
   end
 
+  def share(shared_message)
+    email = "#{shared_message.recipient.uid}@facebook.com"
+    Mailer.share(email, shared_message).deliver
+  end
+
   private
 
   def client

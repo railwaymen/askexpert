@@ -1,0 +1,15 @@
+= form_for :share, url: post_shares_path(post), html: {class: "form-horizontal"} do |f|
+  .modal-header
+    %button.close{data: {dismiss: "modal"}} ×
+    %h3 Share
+  .modal-body
+    %fieldset
+      .control-group
+        = f.text_area :content, placeholder: "Can you help...?", class: "span12", rows: 6
+      .control-group
+        = f.label :recipient, class: "control-label"
+        .controls
+          = f.select :recipient_id, options_from_collection_for_select(current_user.contacts, :id, :name)
+  .modal-footer
+    %button.btn{data: {dismiss: "modal"}} Close
+    = button_tag "Share", type: :submit, class: "btn btn-primary"

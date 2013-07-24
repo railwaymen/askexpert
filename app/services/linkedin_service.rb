@@ -1,6 +1,6 @@
 class LinkedinService
   PROVIDER = "linkedin"
-  SCOPES = 'r_basicprofile r_fullprofile r_emailaddress r_network'
+  SCOPES = 'r_basicprofile r_fullprofile r_emailaddress r_network w_messages'
   FIELDS = ["id", "email-address", "formatted-name", "headline", "skills", "location", "interests", "group-memberships"]
 
   def initialize(auth_token, auth_secret)
@@ -23,6 +23,20 @@ class LinkedinService
       contact = set_profile(app_profile, service_contact)
       ProfileConnection.create(following: profile, followed: contact)
     end
+  end
+
+  def share(shared_message)
+    subject = "AskExpert post"
+    host = Rails.application.config.action_mailer.default_url_options[:host]
+    url = Rails.application.routes.url_helpers.public_post_url(id: shared_message.post_id, host: host)
+    content = <<-eos
+    #{shared_message.content}
+
+    Greetings, #{shared_message.sender.name}
+
+    Link to post: #{url}
+    eos
+    client.send_message(subject, content, [shared_message.recipient.uid])
   end
 
   private

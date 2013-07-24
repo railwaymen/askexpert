@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :profiles, dependent: :nullify
   has_many :contacts, through: :profiles
   has_many :posts, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_one :public_profile, class_name: "Profile"
   has_many :subscriptions, foreign_key: :subscriber_id, dependent: :destroy
   has_many :subscribed_users, through: :subscriptions, source: :subscribed

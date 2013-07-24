@@ -25,6 +25,8 @@ module AskExpert
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
+    config.action_mailer.default_url_options = { host: "localhost:3000" }
+
     config.generators do |g|
       g.view_specs false
       g.helper_specs false

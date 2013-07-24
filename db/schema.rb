@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723131236) do
+ActiveRecord::Schema.define(version: 20130723225710) do
 
   create_table "authentications", force: true do |t|
     t.integer  "user_id"
@@ -72,6 +72,19 @@ ActiveRecord::Schema.define(version: 20130723131236) do
   add_index "profiles", ["authentication_id"], name: "index_profiles_on_authentication_id", using: :btree
   add_index "profiles", ["uid"], name: "index_profiles_on_uid", using: :btree
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
+
+  create_table "shares", force: true do |t|
+    t.integer  "sender_id"
+    t.integer  "recipient_id"
+    t.integer  "post_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shares", ["post_id"], name: "index_shares_on_post_id", using: :btree
+  add_index "shares", ["recipient_id"], name: "index_shares_on_recipient_id", using: :btree
+  add_index "shares", ["sender_id"], name: "index_shares_on_sender_id", using: :btree
 
   create_table "subscriptions", force: true do |t|
     t.integer  "subscriber_id"

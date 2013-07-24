@@ -1,0 +1,13 @@
+.hero-unit
+  %h2
+    %small
+      #{@post.user.name} posted this on #{@post.created_at.to_s(:long)}
+  = simple_format(@post.content)
+  %p= tag_list @post.tag_list
+#comments
+  - @comments.each do |comment|
+    .well.offset2
+      %h2
+        %small
+          #{comment.user.name} commented this on #{comment.created_at.to_s(:long)}
+      = simple_format(comment.content)
