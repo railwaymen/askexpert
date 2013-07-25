@@ -13,6 +13,14 @@ class CommentsController < ApplicationController
     redirect_to @post
   end
 
+  def helpful
+    @post = current_user.posts.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    @comment.helpful = true
+    @comment.save
+    redirect_to @post
+  end
+
   private
 
   def comment_params

@@ -8,7 +8,9 @@ AskExpert::Application.routes.draw do
 
   get "p/:id" => "posts#public_show", as: :public_post
   resources :posts, only: [:show, :index, :create, :edit, :update, :destroy] do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      post :helpful, on: :member
+    end
     resources :shares, only: [:create]
   end
   resource :profile, only: [:edit, :update]

@@ -1,4 +1,8 @@
-.well.offset2
+.well.offset2{class: comment.helpful? ? "alert-success" : ""}
+  - if !comment.helpful? && current_user == comment.post.user
+    = link_to helpful_post_comment_path(comment.post, comment), class: "btn btn-success pull-right", method: :post do
+      %i.icon-ok
+      Helpful
   %h2
     %small
       = link_to comment.user.name, comment.user

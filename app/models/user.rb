@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
     Post.where(user_id: user_ids).order(created_at: :desc)
   end
 
+  def helps_count
+    comments.helpful.count
+  end
+
   private
 
   def ensure_public_profile

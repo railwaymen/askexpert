@@ -8,4 +8,6 @@
     %dd= @profile.location
     %dt Summary
     %dd= @profile.summary
+    %dt Helped
+    %dd= pluralize @user.helps_count, "time"
   %p= tag_list(@profile.tag_list)
